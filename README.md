@@ -6,6 +6,10 @@ This repository serves as the distribution source for data that is used in the p
 
 As referenced in the paper, these data consists of ~1-mile roadway segments that are derived from the 2018 version of the [TxDOT Roadway Invetory](https://www.txdot.gov/inside-txdot/division/transportation-planning/roadway-inventory.html), as well as street intersections that are derived from the same data source, with the assistance of [OpenStreetMap](https://www.openstreetmap.org/).
 
+## Data Files Location
+
+Because of file size limits that are a part of GitHub accounts, the large data files are located here: [https://utexas.box.com/v/peds-midblocks-intersections](https://utexas.box.com/v/peds-midblocks-intersections).
+
 ## Uniform ~1-mile Segments
 
 Since geometry representation is a vital aspect of the uniform 1-mile segments, the 1-mile segments are provided as a ZIP file of an ArcGIS Shapefile. The non-geometric columns are also provided in CSV format. These are provided as the `segs_tx_1mi` table.
@@ -28,14 +32,23 @@ The fields are defined as follows:
 
 Intersections were located using the methodology outlined in the paper referred above. Please contact Kenneth Perrine, owner of this repository, for further details. Intersections are given identifiers and geo-locations. An additional table identifies the two most frequented nearby roadway sections that cross through the intersection, labeled as major and minor approaches.
 
+### ints_tx
+
 First, the `ints_tx` table is provided as a shapefile and also a CSV with latitude and longitude coordinates. This is the definitions for the fields:
 
-* **int_id:** 
+* **int_id:** Arbitrarily-assigned, unique identifier for each intersection
+* **signal:** Boolean signifying whether the corresponding OpenStreetMap intersection has a signal flag associated with it
+* **junction:** Boolean signifying if the intersection is actually an expressway junction (e.g. a merging point for an on-ramp). Please note that in the lastest methodology, intersection-finding around expressways is subject to a number of errors. To increase reliability for idenifying traditional urban intersections, it may be appropriate to filter out all records where junction is set.
+* **signal_mid:** Boolean signifying whether the intersection marks the location of a midblock signal, where the signal likely does not serve a crossing of two or more public roads. This may be set in places where a midblock crosswalk is signalized.
+* **descr:** A string identifier for the intersection. Normally, this would be the name of the major cross-street followed by an ampersand and the name of the minor cross-street. In many cases, this is NULL, indicating uncertainty in determining the cross-streets for the intersection. It is intended that this will be corrected in a future rendition of this data set.
+* **lat/lon** or **center:** Location estimated for the intersection
+
+### ints_tx_appch
 
 Second, the `ints_tx_appch` table estimates major and minor cross-streets, provided as a CSV file that is defined with these columns:
 
 * **int_id:** Refers back to the `int_id` identified in `ints_tx.int_id`.
-* **road_gid:** Identifies the corresponding roadway as found in `segs_tx_1mi` or the TxDOT Roadway Inventory
+* **road_gid:** Identifies the corresponding roadway as found in `segs_tx_1mi` or the TxDOT Roadway Inventory via `gid`
 * **frm_dfo:** This is used along with `road_gid` to identify the roadway segment in TxDOT Roadway Inventory that corresponds with the location of the intersection. See note in `major` below about caveats.
-* **lin_ref:** Linear reference (in miles) along the given roadway that is closest to the location associated with the intersection.
+* **lin_ref:** Linear reference (in miles) along the given roadway that is closest to the location associated with the intersection. This is `NULL` in the few places where disjoints in the TxDOT Roadway Inventory geometry prevented the estimation of the linear reference.
 * **major:** Boolean that indicates whether this is the major or minor cross-street for the intersection. Since this is a simplistic characterization, intersections that have a third cross-street are not fully represented here. Also, for divided roadways as depicted in the TxDOT Roadway Inventroy, the directional carriageway is arbitrarily chosen.
