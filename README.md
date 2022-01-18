@@ -30,7 +30,7 @@ The fields are defined as follows:
 
 ## Intersections
 
-Intersections were located using the methodology outlined in the paper referred above. Please contact Kenneth Perrine, owner of this repository, for further details. Intersections are given identifiers and geo-locations. An additional table identifies the two most frequented nearby roadway sections that cross through the intersection, labeled as major and minor approaches.
+Intersections were located using the methodology outlined in the paper referred above, detailed in the [peds-crash-techvol repository](https://github.com/ut-ctr-nmc/ped-crash-techvol/blob/master/doc/intersections.md#attempt-3-using-openstreetmap). Please contact Kenneth Perrine, owner of this repository, for further details. Intersections are given identifiers and geo-locations. An additional table identifies the two most frequented nearby roadway sections that cross through the intersection, labeled as major and minor approaches.
 
 ### ints_tx
 
