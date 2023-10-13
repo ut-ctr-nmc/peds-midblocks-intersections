@@ -28,6 +28,10 @@ The fields are defined as follows:
 * **center_lat, center_lon:** Convenience coordinates of the center of the roadway geometry.
 * **ident:** A string identifier that represents the roadway (e.g. street name or highway name)
 
+## Uniform ~0.1-mile Segments
+
+There is also another dataset with the same schema as the ~1-mile segments, but representing the TxDOT Roadway Inventory chunked into segments that are approx. 0.1 miles in length. They are provided under the name `segs_tx_01mi`.
+
 ## Intersections
 
 Intersections were located using the methodology outlined in the paper referred above, detailed in the [peds-crash-techvol repository](https://github.com/ut-ctr-nmc/ped-crash-techvol/blob/master/doc/intersections.md#attempt-3-using-openstreetmap). Please contact Kenneth Perrine, owner of this repository, for further details. Intersections are given identifiers and geo-locations. An additional table identifies the two most frequented nearby roadway sections that cross through the intersection, labeled as major and minor approaches.
