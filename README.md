@@ -2,7 +2,7 @@
 
 This repository serves as the distribution source for data that is used in the paper:
 
-Zuniga-Garcia, Natalia, Kenneth A. Perrine, and Kara M. Kockelman. Predicting Pedestrian Crashes in Texas’ Intersections and Midblock Segments, under review, Sustainability.
+Zuniga-Garcia, Natalia, Kenneth A. Perrine, and Kara M. Kockelman. Predicting Pedestrian Crashes in Texas’ Intersections and Midblock Segments. *Sustainability*, **2022**, 14(12), 7164.
 
 As referenced in the paper, these data consists of ~1-mile roadway segments that are derived from the 2018 version of the [TxDOT Roadway Invetory](https://www.txdot.gov/inside-txdot/division/transportation-planning/roadway-inventory.html), as well as street intersections that are derived from the same data source, with the assistance of [OpenStreetMap](https://www.openstreetmap.org/).
 
